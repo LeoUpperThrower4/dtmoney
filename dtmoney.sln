@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dtTerminalDashboard", "dtTerminalDashboard\dtTerminalDashboard.csproj", "{13732BB6-6614-4940-AD02-2BA60100E0A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dtTerminalDashboard", "dtTerminalDashboard\dtTerminalDashboard.csproj", "{13732BB6-6614-4940-AD02-2BA60100E0A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dtUser", "dtUser\dtUser.csproj", "{2CE0518B-FC06-4FF0-B496-3746E95AEE68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dtOperations", "dtOperations\dtOperations.csproj", "{C0605714-C080-407A-AF87-1E821CA2EAB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{13732BB6-6614-4940-AD02-2BA60100E0A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13732BB6-6614-4940-AD02-2BA60100E0A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13732BB6-6614-4940-AD02-2BA60100E0A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CE0518B-FC06-4FF0-B496-3746E95AEE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CE0518B-FC06-4FF0-B496-3746E95AEE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CE0518B-FC06-4FF0-B496-3746E95AEE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CE0518B-FC06-4FF0-B496-3746E95AEE68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0605714-C080-407A-AF87-1E821CA2EAB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0605714-C080-407A-AF87-1E821CA2EAB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0605714-C080-407A-AF87-1E821CA2EAB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0605714-C080-407A-AF87-1E821CA2EAB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
