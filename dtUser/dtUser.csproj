@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FaunaDB.Client" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\databaseManager\databaseManager.csproj" />
     <ProjectReference Include="..\dtOperations\dtOperations.csproj" />
   </ItemGroup>
 
