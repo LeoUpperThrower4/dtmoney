@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using dtOperations;
 using System.Linq;
 using System.Threading.Tasks;
-using FaunaDB.Client;
 using FaunaDB.Types;
 
 namespace databaseManager
 {
     public class FaunaUser
     {
+        [FaunaField("name")]
         private string _name;
+        [FaunaField("id")]
         private string _id;
+        [FaunaField("wallet")]
         private float _wallet;
-        private List<Transaction> _transactionsList;
+        [FaunaField("transactionsList")]
+        private List<FaunaTransaction> _transactionsList;
         
         /// <summary>
         /// Creates a FaunaUser. This is the type used to represent a user in the "users" collection on FaunaDB
@@ -22,7 +25,8 @@ namespace databaseManager
         /// <param name="id">The unique ID of the user</param>
         /// <param name="wallet">The user's wallet amount</param>
         /// <param name="transactionsList">A list containing every transaction made by the user</param>
-        public FaunaUser(string name, string id, float wallet, List<Transaction> transactionsList)
+        [FaunaConstructor]
+        public FaunaUser(string name, string id, float wallet, List<FaunaTransaction> transactionsList)
         {
             _name = name;
             _id = id;
@@ -46,7 +50,7 @@ namespace databaseManager
             return _wallet;
         }
 
-        public List<Transaction> GetTransactions()
+        public List<FaunaTransaction> GetTransactions()
         {
             return _transactionsList;
         }
@@ -56,7 +60,7 @@ namespace databaseManager
         /// </summary>
         /// <param name="transaction">The transaction that will be added to the transactions list</param>
         /// <returns>The transaction that was added to the list</returns>
-        public async Task<Transaction> Transact(Transaction transaction)
+        public async Task<FaunaTransaction> Transact(FaunaTransaction transaction)
         {
             TransactionType transactionType = transaction.GetTransactionType();
             float amount = transaction.GetTransactionAmount();
@@ -83,7 +87,7 @@ namespace databaseManager
         /// Function that returns the last transaction made by the user
         /// </summary>
         /// <returns>A credit transaction of amount 0 if no transactions were ever made by the user. The last transaction is returned, otherwise</returns>
-        public Transaction RetreiveLastTransaction()
+        public FaunaTransaction RetreiveLastTransaction()
         {
             // Esse tratamento fica aqui ou tem q ser capturado pela UI?
             try
@@ -92,7 +96,7 @@ namespace databaseManager
             }
             catch (Exception)
             {
-                return new Transaction(0, "","Nenhuma transação feita até o momento.", TransactionType.Credit);
+                return new FaunaTransaction(0, "","Nenhuma transação feita até o momento.", TransactionType.Credit);
                 throw;
             }
         }

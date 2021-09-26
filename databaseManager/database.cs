@@ -46,9 +46,9 @@ namespace databaseManager
             
             Value converted = result.At("data");
 
-            string user = (string)converted.At("_name");
-            float wallet = (float)(double)converted.At("_wallet");
-            List<Transaction> transactionsList = converted.At("_transactionsList").To<List<Transaction>>().ToOption.Value;
+            string user = (string)converted.At("name");
+            float wallet = (float)(double)converted.At("wallet");
+            List<FaunaTransaction> transactionsList = converted.At("transactionsList").To<List<FaunaTransaction>>().ToOption.Value;
 
             return new FaunaUser(user, id, wallet, transactionsList);
         }
