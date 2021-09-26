@@ -12,7 +12,7 @@ public static class TerminalHelperFunctions
         {
             Console.WriteLine(msg);
         }
-        return Console.ReadLine();
+        return Console.ReadLine().Trim();
     }
     public static void WarnUser(string msg)
     {

@@ -1,29 +1,82 @@
-﻿using dtOperations;
-using dtUser;
+﻿using databaseManager;
+using dtOperations;
+using FaunaDB.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace dtTerminalDashboard
 {
     class Program
     {
-        static User currentUser;
-
+        
+        static FaunaUser currentUser;
         static bool programEnded = false;
 
-        static void Introduction()
+        private static void Introduction()
         {
             TerminalHelperFunctions.ShowUserInfo("Seja bem vindo(a) ao dt.money!");
         }
-        static User Login()
+
+        private static async Task<FaunaUser> SignUp()
+        {
+            string nome;
+            string id;
+            float walletAmount;
+            
+            TerminalHelperFunctions.WarnUser("Legal! Então vamos começar!");
+            
+            while (true)
+            {
+                nome = TerminalHelperFunctions.AskUser("\nQual seu nome? ");
+                if (nome == "")
+                {
+                    TerminalHelperFunctions.WarnUser("Por favor, digite algo.");
+                }
+                else
+                {
+                    break;
+                }
+            }
+            while (true)
+            {
+                id = TerminalHelperFunctions.AskUser("\nDigite um ID? ");
+                // Verificar se já existe
+                if (id == "" || false)
+                {
+                    TerminalHelperFunctions.WarnUser("Por favor, digite algo.");
+                }
+                else
+                {
+                    break;
+                }
+            }
+            while (!float.TryParse(TerminalHelperFunctions.AskUser("\nPara finalizar, qual seu saldo inicial na carteira?\nObs: para R$ 4.563,21 digite 4563.21", false), out walletAmount))
+            {
+                TerminalHelperFunctions.WarnUser("Oops. Formatação errada, tente novamente.");
+            }
+            
+            FaunaUser user = new FaunaUser(nome, id, walletAmount, new ());
+            
+            await Database.CreateUser(user);
+
+            return user;
+        }
+
+        private static async Task<FaunaUser> Login(string id = "")
         {
             //Depois tem q verificar pra ver se o usuário existe ou não
-            string nome = TerminalHelperFunctions.AskUser("Qual seu nome? ");
-            string id = TerminalHelperFunctions.AskUser("Qual sua identificação? ");
-            return new User(nome, id);
+            if (id == "")
+            {
+                id = TerminalHelperFunctions.AskUser("Qual sua identificação? ");
+            }
+            FaunaUser user = await Database.GetUser(id);
+            currentUser = user;
+            return user;
         }
-        static void Operation(int operation)
+
+        private static async Task Operation(int operation)
         {
             int tries = 0;
             switch (operation)
@@ -42,6 +95,7 @@ namespace dtTerminalDashboard
                             {
                                 string title = TerminalHelperFunctions.AskUser("Título da transação: ");
                                 string category = TerminalHelperFunctions.AskUser("Categoria da transação: ");
+                                
                                 TransactionType transactionType;
                                 if (operation == 1)
                                 {
@@ -51,8 +105,9 @@ namespace dtTerminalDashboard
                                 {
                                     transactionType = TransactionType.Debit;
                                 }
+                                
                                 Transaction transaction = new Transaction(amount, category, title, transactionType);
-                                currentUser.Transact(transaction);
+                                await currentUser.Transact(transaction);
                                 break;
                             }
 
@@ -70,10 +125,10 @@ namespace dtTerminalDashboard
                     }
                     break;
                 case 3:
-                    TerminalHelperFunctions.ShowUserInfo($"Você tem R$ {currentUser.RetreiveWalletAmount()} reais.");
+                    TerminalHelperFunctions.ShowUserInfo($"Você tem R$ {currentUser.GetWallet()} reais.");
                     break;
                 case 4:
-                    List<Transaction> transactions = currentUser.RetreiveTransactionHistory();
+                    List<Transaction> transactions = currentUser.GetTransactions();
                     transactions.ForEach(transaction =>
                     {
                         TerminalHelperFunctions.ShowUserInfo(transaction.ToString());
@@ -89,23 +144,42 @@ namespace dtTerminalDashboard
                 
             }
         }
-        static void HandleSelectOperation(int operation)
+
+        private static async Task HandleSelectOperation(int operation)
         {
             int[] availableOperations = new int[]{ 1, 2, 3, 4, 5, 6 };
             if (availableOperations.Contains(operation))
             {
-                Operation(operation);
+                await Operation(operation);
             }
             else
             {
                 TerminalHelperFunctions.WarnUser("Operação inválida. Tente novamente.");
             }
         }
-        static void Main(string[] args)
+        
+        static async Task Main(string[] args)
         {
             Introduction();
-            
-            currentUser = Login();
+
+            string userId = TerminalHelperFunctions.AskUser("Se você já tem um ID, digite-o, senão, pressione enter para iniciarmos o cadastro.", false);
+            if (userId == "")
+            {
+                FaunaUser user = await SignUp();
+                userId = user.GetId();
+            }
+            Console.WriteLine("Logando...");
+            try
+            {
+                currentUser = await Login(userId);
+            }
+            catch (Exception ex)
+            {
+                TerminalHelperFunctions.WarnUser($"Erro inesperado no login. Finalizando o programa.\n{ex}");
+                return;
+            }
+
+            TerminalHelperFunctions.ShowUserInfo($"Olá {currentUser.GetName()}");
 
             while (!programEnded)
             {
@@ -116,7 +190,7 @@ namespace dtTerminalDashboard
                 }
                 if (int.TryParse(userChoice, out int operation))
                 {
-                    HandleSelectOperation(operation);
+                    await HandleSelectOperation (operation);
                 }
                 else
                 {
