@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\databaseManager\databaseManager.csproj" />
     <ProjectReference Include="..\dtOperations\dtOperations.csproj" />
-    <ProjectReference Include="..\dtUser\dtUser.csproj" />
   </ItemGroup>
 
 </Project>
