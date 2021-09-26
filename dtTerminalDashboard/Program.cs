@@ -71,9 +71,18 @@ namespace dtTerminalDashboard
             {
                 id = TerminalHelperFunctions.AskUser("Qual sua identificação? ");
             }
-            FaunaUser user = await Database.GetUser(id);
-            currentUser = user;
-            return user;
+            try
+            {
+                FaunaUser user = await Database.GetUser(id);
+                currentUser = user;
+                return user;
+            }
+            catch (Exception ex)
+            {
+                TerminalHelperFunctions.WarnUser(ex.Message);
+                throw;
+            }
+            
         }
 
         private static async Task Operation(int operation)
@@ -165,8 +174,16 @@ namespace dtTerminalDashboard
             string userId = TerminalHelperFunctions.AskUser("Se você já tem um ID, digite-o, senão, pressione enter para iniciarmos o cadastro.", false);
             if (userId == "")
             {
-                FaunaUser user = await SignUp();
-                userId = user.GetId();
+                try
+                {
+                    FaunaUser user = await SignUp();
+                    userId = user.GetId();
+                }
+                catch (Exception ex)
+                {
+                    TerminalHelperFunctions.WarnUser(ex.Message);
+                    return;
+                }
             }
             Console.WriteLine("Logando...");
             try

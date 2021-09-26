@@ -31,7 +31,17 @@ namespace databaseManager
         /// <returns>The user added to the database</returns>
         public static async Task<FaunaUser> CreateUser(FaunaUser user)
         {
-            await client.Query(Create(Collection("users"), Obj("data", Encoder.Encode(user))));
+
+            try
+            {
+                FaunaUser userExists = await Database.GetUser(user.GetId());
+                throw new Exception("User already exists");
+            }
+            catch (FaunaDB.Errors.NotFound)
+            {
+                await client.Query(Create(Collection("users"), Obj("data", Encoder.Encode(user))));
+            }
+
             return user;
         }
 
@@ -43,7 +53,7 @@ namespace databaseManager
         public static async Task<FaunaUser> GetUser(string id)
         {
             Value result = await client.Query(Get(Match(Index("user_by_id"), id)), TimeSpan.FromSeconds(42));
-            
+
             Value converted = result.At("data");
 
             string user = (string)converted.At("name");
