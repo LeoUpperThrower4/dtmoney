@@ -106,7 +106,7 @@ namespace dtTerminalDashboard
                                     transactionType = TransactionType.Debit;
                                 }
                                 
-                                Transaction transaction = new Transaction(amount, category, title, transactionType);
+                                FaunaTransaction transaction = new FaunaTransaction(amount, category, title, transactionType);
                                 await currentUser.Transact(transaction);
                                 break;
                             }
@@ -128,7 +128,7 @@ namespace dtTerminalDashboard
                     TerminalHelperFunctions.ShowUserInfo($"Você tem R$ {currentUser.GetWallet()} reais.");
                     break;
                 case 4:
-                    List<Transaction> transactions = currentUser.GetTransactions();
+                    List<FaunaTransaction> transactions = currentUser.GetTransactions();
                     transactions.ForEach(transaction =>
                     {
                         TerminalHelperFunctions.ShowUserInfo(transaction.ToString());
