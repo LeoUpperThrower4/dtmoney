@@ -7,7 +7,7 @@
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney-desktop?style=for-the-badge)
 
 <!-- Alterar cover quando o projeto estiver 100% funcional -->
-<img src="img/cover.gif" alt="cover">
+<img src="imgs/cover.gif" alt="cover">
 
 > Plataforma de acopanhamento de transações pessoais
 
