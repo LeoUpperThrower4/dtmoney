@@ -1,10 +1,10 @@
 # dt.money
 
-![GitHub repo size](https://img.shields.io/github/repo-size/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney-desktop?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney-desktop?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney-desktop?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney-desktop?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney-desktop?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney?style=for-the-badge)
 
 <!-- Alterar cover quando o projeto estiver 100% funcional -->
 <img src="imgs/cover.gif" alt="cover">
@@ -35,13 +35,13 @@ Foram usadas diversas tecnologias, visto que o intuito era integrar duas platafo
 
 ### 🌐 Web
 
-## (achar um emoji bom) Instalando o Blog Space Traveling
+## (achar um emoji bom) Instalando o dt.money
 
-Para instalar o Blog Space Traveling no seu computador, siga estas etapas:
+Para instalar o dt.money no seu computador, siga estas etapas:
 
 ```bash
 # No seu terminal, clone o projeto
-$ git clone https://github.com/LeoUpperThrower4/RJS-Desafio-05.git
+$ git clone https://github.com/LeoUpperThrower4/dtmoney.git
 
 # Entre na pasta...
 $ cd RJS-Desafio-05
@@ -56,20 +56,20 @@ PRISMIC_API_ENDPOINT = seu_endpoint;
 PRISMIC_ACCESS_TOKEN = sua_chave;
 ```
 
-## ☕ Usando o Blog Space Traveling
+## ☕ Usando o dt.money
 
-Para usar o Blog Space Traveling, siga estas etapas:
+Para usar o dt.money, siga estas etapas:
 
 ```bash
 # No seu terminal, inicie o projeto
 $ yarn dev
 ```
 
-## 📫 Contribuindo para Blog Space Traveling
+## 📫 Contribuindo para dt.money
 
 > Sua contribuição é muito bem vinda! 😀
 
-Para contribuir com o Blog Space Traveling, siga estas etapas:
+Para contribuir com o dt.money, siga estas etapas:
 
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b <nome_branch>`.
