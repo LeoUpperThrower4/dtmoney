@@ -57,7 +57,7 @@ namespace dtTerminalDashboard
                 TerminalHelperFunctions.WarnUser("Oops. Formatação errada, tente novamente.");
             }
             
-            FaunaUser user = new FaunaUser(nome, id, walletAmount, new ());
+            FaunaUser user = new FaunaUser(nome, id, walletAmount, new (), 0, 0);
             
             await Database.CreateUser(user);
 
