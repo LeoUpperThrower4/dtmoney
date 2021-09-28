@@ -13,6 +13,13 @@ const PageDashboard: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
 
+  const modalCustomStyles = {
+    content: {
+      maxWidth: '1120px',
+      margin: '0 auto',
+    }
+  };
+
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   Modal.setAppElement("#__next")
@@ -32,6 +39,7 @@ const PageDashboard: NextPage = () => {
         <Modal
           isOpen={isModalOpen}
           onRequestClose={handleModalClose}
+          style={modalCustomStyles}
         >
           <NewTransactionModal />
         </Modal>
