@@ -1,17 +1,29 @@
 # dt.money
 
-![GitHub repo size](https://img.shields.io/github/repo-size/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LeoUpperThrower4/https://github.com/LeoUpperThrower4/dtmoney?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/LeoUpperThrower4/dtmoney?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/LeoUpperThrower4/dtmoney?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/LeoUpperThrower4/dtmoney?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/LeoUpperThrower4/dtmoney?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LeoUpperThrower4/dtmoney?style=for-the-badge)
 
 <!-- Alterar cover quando o projeto estiver 100% funcional -->
-<img src="imgs/cover.gif" alt="cover">
+<img src="assets/preview_web.gif" alt="cover">
 
 > Plataforma de acopanhamento de transações pessoais
 
 O dt.money é uma plataforma de acopanhamento de transações pessoais. Conta com uma parte desktop e uma web. Seu design pode ser encontrado [aqui](https://www.figma.com/file/sfYqFZG6Y6247jAXiZWtIq/dtmoney?node-id=0%3A1)
+
+## 🔎 Preview
+
+Um pequeno preview de cada uma das aplicações
+
+### 🖥️ Desktop
+
+<img src="assets/preview_desktop.gif" alt="cover">
+
+### 🌐 Web
+
+<img src="assets/preview_web.gif" alt="cover">
 
 ## 🚀 Tecnologias
 
@@ -29,13 +41,20 @@ Foram usadas diversas tecnologias, visto que o intuito era integrar duas platafo
 
 ## Requisitos
 
+Os requisitos são diferentes dependendo do programa que for executado. No entanto, a tecnologia git é necessário nos dois.
+
+- [Git](https://git-scm.com/)
+
 ### 🖥️ Desktop
 
 - [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/dotnet/5.0#:~:text=x86-,.NET%20Desktop%20Runtime%205.0.10,-The%20.NET%20Desktop)
 
 ### 🌐 Web
 
-## (achar um emoji bom) Instalando o dt.money
+- [Yarn](https://yarnpkg.com/)
+- [Next](https://nextjs.org/)
+
+## Instalando o dt.money
 
 Para instalar o dt.money no seu computador, siga estas etapas:
 
@@ -44,7 +63,14 @@ Para instalar o dt.money no seu computador, siga estas etapas:
 $ git clone https://github.com/LeoUpperThrower4/dtmoney.git
 
 # Entre na pasta...
-$ cd RJS-Desafio-05
+$ cd dtmoney
+```
+
+### 🌐 Web
+
+```bash
+# Entre no diretório web
+$ cd web
 
 # Instale as dependências
 $ yarn
@@ -60,12 +86,24 @@ PRISMIC_ACCESS_TOKEN = sua_chave;
 
 Para usar o dt.money, siga estas etapas:
 
+### 🌐 Web
+
 ```bash
-# No seu terminal, inicie o projeto
+# Em '.../dtmoney/web', inicie o projeto
 $ yarn dev
 ```
 
-## 📫 Contribuindo para dt.money
+### 🖥️ Desktop
+
+```bash
+# Entre no diretório desktop
+$ cd desktop
+
+# Abra o arquivo dtmoney.sln no Visual Studio 2019
+# Execute o projeto
+```
+
+## 📫 Contribuindo para o dt.money
 
 > Sua contribuição é muito bem vinda! 😀
 
