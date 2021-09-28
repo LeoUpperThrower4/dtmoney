@@ -15,6 +15,10 @@ namespace databaseManager
         private string _id;
         [FaunaField("wallet")]
         private float _wallet;
+        [FaunaField("income")]
+        private float _totalIncome;
+        [FaunaField("outcome")]
+        private float _totalOutcome;
         [FaunaField("transactionsList")]
         private List<FaunaTransaction> _transactionsList;
         
@@ -26,12 +30,14 @@ namespace databaseManager
         /// <param name="wallet">The user's wallet amount</param>
         /// <param name="transactionsList">A list containing every transaction made by the user</param>
         [FaunaConstructor]
-        public FaunaUser(string name, string id, float wallet, List<FaunaTransaction> transactionsList)
+        public FaunaUser(string name, string id, float wallet, List<FaunaTransaction> transactionsList, float income, float outcome)
         {
             _name = name;
             _id = id;
             _wallet = wallet;
             _transactionsList = transactionsList;
+            _totalOutcome = outcome;
+            _totalIncome = income;
         }
 
         // Getter functions
@@ -68,15 +74,17 @@ namespace databaseManager
             if (transactionType == TransactionType.Credit)
             {
                 _wallet += amount;
+                _totalIncome += amount;
             }
             else if (transactionType == TransactionType.Debit)
             {
                 _wallet -= amount;
+                _totalOutcome += amount;
             }
 
             _transactionsList.Add(transaction);
 
-            FaunaUser updatedUser = new FaunaUser(_name, _id, _wallet, _transactionsList);
+            FaunaUser updatedUser = new FaunaUser(_name, _id, _wallet, _transactionsList, _totalIncome, _totalOutcome);
 
             await Database.UpdateUser(_id, updatedUser);
 

@@ -11,7 +11,7 @@ namespace databaseManager
     public static class Database
     {
         // Levar para um arquivo de ambiente
-        private static readonly string FAUNA_SECRET = "fnAET_D6GXAKRS2ZYT773qQF3sp44O752UenlQzI";
+        private static readonly string FAUNA_SECRET = "fnAEUIakJUACRT_7SpBFMf49OXks7HTk70gI4407";
         //
 
         private static FaunaClient client;
@@ -31,7 +31,6 @@ namespace databaseManager
         /// <returns>The user added to the database</returns>
         public static async Task<FaunaUser> CreateUser(FaunaUser user)
         {
-
             try
             {
                 FaunaUser userExists = await Database.GetUser(user.GetId());
@@ -58,9 +57,11 @@ namespace databaseManager
 
             string user = (string)converted.At("name");
             float wallet = (float)(double)converted.At("wallet");
+            float totalIncome = (float)(double)converted.At("income");
+            float totalOutcome = (float)(double)converted.At("outcome");
             List<FaunaTransaction> transactionsList = converted.At("transactionsList").To<List<FaunaTransaction>>().ToOption.Value;
 
-            return new FaunaUser(user, id, wallet, transactionsList);
+            return new FaunaUser(user, id, wallet, transactionsList, totalIncome, totalOutcome);
         }
 
         /// <summary>
