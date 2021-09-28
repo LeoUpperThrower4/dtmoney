@@ -63,6 +63,7 @@ export function FaunaInfoProvider({ children }: FaunaInfoProviderProps) {
         })
       })
     } catch (error) {
+      console.log(error);
     }
   }
 
@@ -74,7 +75,9 @@ export function FaunaInfoProvider({ children }: FaunaInfoProviderProps) {
 }
 
 export function useFaunaInfo(id: string) {
-  const faunaInfo = useContext(FaunaInfoContext);
-  faunaInfo.getUserInfo(id)
+  let faunaInfo = useContext(FaunaInfoContext);
+  if (id) {
+    faunaInfo.getUserInfo(id)
+  }
   return faunaInfo;
 }
