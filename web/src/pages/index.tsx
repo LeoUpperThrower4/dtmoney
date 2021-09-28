@@ -1,6 +1,5 @@
-import { route } from "next/dist/server/router";
 import { useRouter } from "next/router";
-import { FormEvent, ReactNode, SyntheticEvent, useState } from "react";
+import { FormEvent, ReactNode, useState } from "react";
 
 import styles from './Home.module.scss'
 
